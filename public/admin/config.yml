@@ -1,5 +1,3 @@
-local_backend: true
-
 logo_url: /logo.svg
 
 backend:
