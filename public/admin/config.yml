@@ -4,10 +4,8 @@ logo_url: /logo.svg
 
 backend:
     name: "github"
-    repo: zankhq/astros
+    repo: ImJonahCodes/astros
     branch: main
-    base_url: https://cms.majestico.workers.dev
-    automatic_deployments: false
 
 media_folder: "public/images"
 public_folder: "/images"
