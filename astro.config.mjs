@@ -7,6 +7,7 @@ import rehypeSlug from "rehype-slug";
 import astroI18next from "astro-i18next";
 import alpinejs from "@astrojs/alpinejs";
 import AstroPWA from "@vite-pwa/astro";
+import NetlifyCMS from 'astro-netlify-cms';
 
 // https://astro.build/config
 export default defineConfig({
@@ -21,6 +22,28 @@ export default defineConfig({
 		sitemap(),
 		astroI18next(),
 		alpinejs(),
+		NetlifyCMS({
+			config: {
+			  backend: {
+				name: 'git-gateway',
+				branch: 'main',
+			  },
+			  collections: [
+				// Define a blog post collection
+				{
+				  name: 'posts',
+				  label: 'Blog Posts',
+				  folder: 'src/content/blog',
+				  create: true,
+				  delete: true,
+				  fields: [
+					{ name: 'title', widget: 'string', label: 'Post Title' },
+					{ name: 'body', widget: 'markdown', label: 'Post Body' },
+				  ],
+				},
+			  ],
+			},
+		  }),
 		AstroPWA({
 			mode: "production",
 			base: "/",
